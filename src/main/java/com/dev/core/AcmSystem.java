@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ACMSystem {
+public class AcmSystem {
     public static void main(String[] args) {
-        SpringApplication.run(ACMSystem.class, args);
+        SpringApplication.run(AcmSystem.class, args);
     }
 }

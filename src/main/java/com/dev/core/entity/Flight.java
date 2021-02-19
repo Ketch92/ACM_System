@@ -1,6 +1,5 @@
 package com.dev.core.entity;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import javax.persistence.Column;
