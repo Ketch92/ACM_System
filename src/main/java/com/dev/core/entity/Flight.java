@@ -1,6 +1,7 @@
 package com.dev.core.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +26,7 @@ public class Flight {
     @JoinColumn(name = "air_company")
     private AirCompany airCompany;
     @OneToMany
-    private Airplane airplane;
+    private List<Airplane> airplanes;
     @Column(name = "departure_country")
     private String departureCountry;
     @Column(name = "destination_country")
@@ -64,12 +65,12 @@ public class Flight {
         this.airCompany = airCompany;
     }
     
-    public Airplane getAirplane() {
-        return airplane;
+    public List<Airplane> getAirplanes() {
+        return airplanes;
     }
     
-    public void setAirplane(Airplane airplane) {
-        this.airplane = airplane;
+    public void setAirplanes(List<Airplane> airplanes) {
+        this.airplanes = airplanes;
     }
     
     public String getDepartureCountry() {
@@ -138,13 +139,13 @@ public class Flight {
         }
         Flight flight = (Flight) o;
         return distance == flight.distance
+               && estimatedFlightTime == flight.estimatedFlightTime
                && Objects.equals(id, flight.id)
                && Objects.equals(flightStatus, flight.flightStatus)
                && Objects.equals(airCompany, flight.airCompany)
-               && Objects.equals(airplane, flight.airplane)
+               && Objects.equals(airplanes, flight.airplanes)
                && Objects.equals(departureCountry, flight.departureCountry)
                && Objects.equals(destinationCountry, flight.destinationCountry)
-               && Objects.equals(estimatedFlightTime, flight.estimatedFlightTime)
                && Objects.equals(endedAt, flight.endedAt)
                && Objects.equals(delayStartedAt, flight.delayStartedAt)
                && Objects.equals(createdAt, flight.createdAt);
@@ -153,8 +154,25 @@ public class Flight {
     @Override
     public int hashCode() {
         return Objects.hash(id, flightStatus, airCompany,
-                airplane, departureCountry, destinationCountry,
+                airplanes, departureCountry, destinationCountry,
                 distance, estimatedFlightTime, endedAt,
                 delayStartedAt, createdAt);
+    }
+    
+    @Override
+    public String toString() {
+        return "Flight{"
+               + "id=" + id
+               + ", flightStatus=" + flightStatus
+               + ", airCompany=" + airCompany
+               + ", airplanes=" + airplanes
+               + ", departureCountry='" + departureCountry + '\''
+               + ", destinationCountry='" + destinationCountry + '\''
+               + ", distance=" + distance
+               + ", estimatedFlightTime=" + estimatedFlightTime
+               + ", endedAt=" + endedAt
+               + ", delayStartedAt=" + delayStartedAt
+               + ", createdAt=" + createdAt
+               + '}';
     }
 }
