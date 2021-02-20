@@ -6,7 +6,9 @@ import com.dev.core.entity.type.AirplaneType;
 import com.dev.core.repository.AirplaneRepository;
 import com.dev.core.service.AirplaneService;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AirplaneServiceImpl implements AirplaneService {
     
     private final AirplaneRepository airplaneRepository;
@@ -47,7 +49,9 @@ public class AirplaneServiceImpl implements AirplaneService {
     
     @Override
     public void remove(Airplane airplane) {
-        airplaneRepository.delete(airplane);
+        if (airplaneRepository.findById(airplane.getId()).isPresent()) {
+            airplaneRepository.delete(airplane);
+        }
     }
     
     @Override
