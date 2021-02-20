@@ -1,8 +1,12 @@
 package com.dev.core.controller;
 
+import com.dev.core.entity.dto.status.FlightStatusRequestDto;
+import com.dev.core.entity.dto.status.FlightStatusRespDto;
 import com.dev.core.entity.dto.type.company.CompanyTypeRequestDto;
 import com.dev.core.entity.dto.type.company.CompanyTypeRespDto;
+import com.dev.core.service.FlightStatusService;
 import com.dev.core.service.mapper.impl.CompanyTypeMapper;
+import com.dev.core.service.mapper.impl.FlightStatusMapper;
 import com.dev.core.service.type.CompanyTypeService;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,43 +19,41 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("/company-types")
+@RequestMapping("/flight-statuses")
 @RestController
-public class CompanyTypeController {
-    private final CompanyTypeService companyTypeService;
-    private final CompanyTypeMapper mapper;
+public class FlightStatusController {
+    private final FlightStatusService flightStatusService;
+    private final FlightStatusMapper mapper;
     
-    public CompanyTypeController(CompanyTypeService companyTypeService,
-                                 CompanyTypeMapper mapper) {
-        this.companyTypeService = companyTypeService;
+    public FlightStatusController(FlightStatusService flightStatusService, FlightStatusMapper mapper) {
+        this.flightStatusService = flightStatusService;
         this.mapper = mapper;
     }
     
-    
     @GetMapping("/{id}")
-    public CompanyTypeRespDto get(@PathVariable Long id) {
-        return mapper.mapToDto(companyTypeService.get(id));
+    public FlightStatusRespDto get(@PathVariable Long id) {
+        return mapper.mapToDto(flightStatusService.getStatus(id));
     }
     
     @GetMapping("/byName")
-    public CompanyTypeRespDto get(@RequestParam String name) {
-        return mapper.mapToDto(companyTypeService.get(name));
+    public FlightStatusRespDto get(@RequestParam String name) {
+        return mapper.mapToDto(flightStatusService.getStatus(name));
     }
     
     @GetMapping
-    public List<CompanyTypeRespDto> getAll() {
-        return companyTypeService.getAll().stream()
+    public List<FlightStatusRespDto> getAll() {
+        return flightStatusService.getAll().stream()
                 .map(mapper::mapToDto)
                 .collect(Collectors.toList());
     }
     
     @DeleteMapping("/{id}")
     public void removeType(@PathVariable Long id) {
-        companyTypeService.remove(id);
+        flightStatusService.remove(id);
     }
     
     @PostMapping
-    public void addNewType(@RequestBody CompanyTypeRequestDto dto) {
-        companyTypeService.create(mapper.mapToEntity(dto));
+    public void addNewType(@RequestBody FlightStatusRequestDto dto) {
+        flightStatusService.create(mapper.mapToEntity(dto));
     }
 }
