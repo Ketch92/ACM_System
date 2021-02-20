@@ -13,7 +13,7 @@ public interface AirCompanyService {
     
     List<AirCompany> getAll();
     
-    void remove(AirCompany airCompany);
+    void remove(Long id);
     
     void update(AirCompany airCompany);
 }

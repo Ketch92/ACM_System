@@ -3,6 +3,7 @@ package com.dev.core.service.implementation.type;
 import com.dev.core.entity.type.CompanyType;
 import com.dev.core.repository.type.CompanyTypeRepository;
 import com.dev.core.service.type.CompanyTypeService;
+import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,8 +26,8 @@ public class CompanyTypeServiceImpl implements CompanyTypeService {
     }
     
     @Override
-    public CompanyType get(String type) {
-        return companyTypeRepository.getCompanyTypeByTypeName(type);
+    public Optional<CompanyType> get(String type) {
+        return Optional.ofNullable(companyTypeRepository.getCompanyTypeByTypeName(type));
     }
     
     @Override

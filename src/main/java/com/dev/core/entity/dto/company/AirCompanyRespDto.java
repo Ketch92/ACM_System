@@ -4,7 +4,7 @@ public class AirCompanyRespDto {
     private Long id;
     private String name;
     private String companyType;
-    private String foundedAt;
+    private int foundedAt;
     
     public Long getId() {
         return id;
@@ -30,11 +30,11 @@ public class AirCompanyRespDto {
         this.companyType = companyType;
     }
     
-    public String getFoundedAt() {
+    public int getFoundedAt() {
         return foundedAt;
     }
     
-    public void setFoundedAt(String foundedAt) {
+    public void setFoundedAt(int foundedAt) {
         this.foundedAt = foundedAt;
     }
 }

@@ -22,13 +22,12 @@ public class AirCompanyServiceImpl implements AirCompanyService {
     
     @Override
     public AirCompany get(Long id) {
-        return airCompanyRepository.getOne(id);
+        return airCompanyRepository.findById(id).orElseThrow();
     }
     
     @Override
     public AirCompany get(String companyName) {
-        //TODO
-        return null;
+        return airCompanyRepository.getByName(companyName).orElseThrow();
     }
     
     @Override
@@ -37,12 +36,16 @@ public class AirCompanyServiceImpl implements AirCompanyService {
     }
     
     @Override
-    public void remove(AirCompany airCompany) {
-        airCompanyRepository.delete(airCompany);
+    public void remove(Long id) {
+        if (airCompanyRepository.findById(id).isPresent()) {
+            airCompanyRepository.deleteById(id);
+        }
     }
     
     @Override
     public void update(AirCompany airCompany) {
-        airCompanyRepository.save(airCompany);
+        if (airCompanyRepository.findById(airCompany.getId()).isPresent()) {
+            airCompanyRepository.save(airCompany);
+        }
     }
 }
