@@ -17,7 +17,9 @@ public class CompanyTypeServiceImpl implements CompanyTypeService {
     
     @Override
     public CompanyType create(CompanyType companyType) {
-        return companyTypeRepository.save(companyType);
+        return companyTypeRepository
+                .getCompanyTypeByTypeName(companyType.getType())
+                .orElseGet(() -> companyTypeRepository.save(companyType));
     }
     
     @Override
@@ -26,8 +28,8 @@ public class CompanyTypeServiceImpl implements CompanyTypeService {
     }
     
     @Override
-    public Optional<CompanyType> get(String type) {
-        return Optional.ofNullable(companyTypeRepository.getCompanyTypeByTypeName(type));
+    public CompanyType get(String type) {
+        return companyTypeRepository.getCompanyTypeByTypeName(type).orElseThrow();
     }
     
     @Override
