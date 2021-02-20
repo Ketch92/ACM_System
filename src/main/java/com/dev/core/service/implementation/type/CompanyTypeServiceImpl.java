@@ -3,6 +3,7 @@ package com.dev.core.service.implementation.type;
 import com.dev.core.entity.type.CompanyType;
 import com.dev.core.repository.type.CompanyTypeRepository;
 import com.dev.core.service.type.CompanyTypeService;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +34,14 @@ public class CompanyTypeServiceImpl implements CompanyTypeService {
     }
     
     @Override
-    public void remove(CompanyType companyType) {
-        companyTypeRepository.delete(companyType);
+    public List<CompanyType> getAll() {
+        return companyTypeRepository.findAll();
+    }
+    
+    @Override
+    public void remove(Long id) {
+        if (companyTypeRepository.findById(id).isPresent()) {
+            companyTypeRepository.deleteById(id);
+        }
     }
 }

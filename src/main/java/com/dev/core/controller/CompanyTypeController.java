@@ -2,9 +2,12 @@ package com.dev.core.controller;
 
 import com.dev.core.entity.dto.type.airplane.AirplaneTypeRequestDto;
 import com.dev.core.entity.dto.type.airplane.AirplaneTypeRespDto;
+import com.dev.core.entity.dto.type.company.CompanyTypeRequestDto;
+import com.dev.core.entity.dto.type.company.CompanyTypeRespDto;
 import com.dev.core.service.implementation.type.AirplaneTypeServiceImpl;
 import com.dev.core.service.mapper.impl.AirplaneTypeMapper;
-import com.dev.core.service.type.AirplaneTypeService;
+import com.dev.core.service.mapper.impl.CompanyTypeMapper;
+import com.dev.core.service.type.CompanyTypeService;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,42 +19,43 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("/airplane-types")
+@RequestMapping("/company-types")
 @RestController
-public class AirplaneTypeController {
-    private final AirplaneTypeService airplaneTypeService;
-    private final AirplaneTypeMapper mapper;
+public class CompanyTypeController {
+    private final CompanyTypeService companyTypeService;
+    private final CompanyTypeMapper mapper;
     
-    public AirplaneTypeController(AirplaneTypeService airplaneTypeService,
-                                  AirplaneTypeMapper mapper) {
-        this.airplaneTypeService = airplaneTypeService;
+    public CompanyTypeController(CompanyTypeService companyTypeService,
+                                 CompanyTypeMapper mapper) {
+        this.companyTypeService = companyTypeService;
         this.mapper = mapper;
     }
     
+    
     @GetMapping("/{id}")
-    public AirplaneTypeRespDto get(@PathVariable Long id) {
-        return mapper.mapToDto(airplaneTypeService.get(id));
+    public CompanyTypeRespDto get(@PathVariable Long id) {
+        return mapper.mapToDto(companyTypeService.get(id));
     }
     
     @GetMapping("/byName")
-    public AirplaneTypeRespDto get(@RequestParam String name) {
-        return mapper.mapToDto(airplaneTypeService.get(name));
+    public CompanyTypeRespDto get(@RequestParam String name) {
+        return mapper.mapToDto(companyTypeService.get(name));
     }
     
     @GetMapping
-    public List<AirplaneTypeRespDto> getAll() {
-        return airplaneTypeService.getAll().stream()
+    public List<CompanyTypeRespDto> getAll() {
+        return companyTypeService.getAll().stream()
                 .map(mapper::mapToDto)
                 .collect(Collectors.toList());
     }
     
     @DeleteMapping("/{id}")
     public void removeType(@PathVariable Long id) {
-        airplaneTypeService.remove(id);
+        companyTypeService.remove(id);
     }
     
     @PostMapping
-    public void addNewType(@RequestBody AirplaneTypeRequestDto dto) {
-        airplaneTypeService.create(mapper.mapToEntity(dto));
+    public void addNewType(@RequestBody CompanyTypeRequestDto dto) {
+        companyTypeService.create(mapper.mapToEntity(dto));
     }
 }

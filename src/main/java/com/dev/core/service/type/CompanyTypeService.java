@@ -1,6 +1,7 @@
 package com.dev.core.service.type;
 
 import com.dev.core.entity.type.CompanyType;
+import java.util.List;
 
 public interface CompanyTypeService {
     CompanyType create(CompanyType companyType);
@@ -9,5 +10,7 @@ public interface CompanyTypeService {
     
     CompanyType get(String type);
     
-    void remove(CompanyType companyType);
+    List<CompanyType> getAll();
+    
+    void remove(Long id);
 }
