@@ -18,6 +18,13 @@ public class FlightStatus {
     private Long id;
     private String statusName;
     
+    public FlightStatus() {
+    }
+    
+    public FlightStatus(String statusName) {
+        this.statusName = statusName;
+    }
+    
     public Long getId() {
         return id;
     }

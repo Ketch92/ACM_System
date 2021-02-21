@@ -11,6 +11,7 @@ import com.dev.core.service.mapper.impl.AirplaneMapper;
 import com.dev.core.service.type.AirplaneTypeService;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.validation.Valid;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -75,7 +76,7 @@ public class AirplaneController {
     }
     
     @PostMapping
-    public void addAirplane(@RequestBody AirplaneRequestDto dto) {
+    public void addAirplane(@RequestBody @Valid AirplaneRequestDto dto) {
         Airplane airplane = mapper.mapToEntity(dto);
         airplane.setNumberOfFlights(0);
         airplane.setFlightDistance(0);

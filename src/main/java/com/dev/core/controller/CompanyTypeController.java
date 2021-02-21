@@ -6,6 +6,7 @@ import com.dev.core.service.mapper.impl.CompanyTypeMapper;
 import com.dev.core.service.type.CompanyTypeService;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.validation.Valid;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -50,7 +51,7 @@ public class CompanyTypeController {
     }
     
     @PostMapping
-    public void addNewType(@RequestBody CompanyTypeRequestDto dto) {
+    public void addNewType(@RequestBody @Valid CompanyTypeRequestDto dto) {
         companyTypeService.create(mapper.mapToEntity(dto));
     }
 }

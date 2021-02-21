@@ -12,6 +12,7 @@ import com.dev.core.service.mapper.impl.FlightMapper;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.validation.Valid;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,7 +44,7 @@ public class FlightController {
         this.mapper = mapper;
     }
     
-    @GetMapping("/")
+    @GetMapping
     public List<FlightRespDto> getByCompanyAndStatus(@RequestParam String company,
                                                      @RequestParam String status) {
         AirCompany airCompany = companyService.get(company);
@@ -59,7 +60,7 @@ public class FlightController {
     }
     
     @PostMapping
-    public void addFlight(@RequestBody FlightRequestDto dto) {
+    public void addFlight(@RequestBody @Valid FlightRequestDto dto) {
         Flight flight = mapper.mapToEntity(dto);
         flight.setFlightStatus(flightStatusService.getStatus(PENDING_STATUS));
         flightService.create(flight);
@@ -78,12 +79,15 @@ public class FlightController {
         Flight flight = flightService.get(id);
         switch (status) {
             case DELAYED_STATUS:
+                flight.setFlightStatus(flightStatusService.getStatus(DELAYED_STATUS));
                 flight.setDelayStartedAt(LocalDateTime.now());
                 break;
             case COMPLETED_STATUS:
+                flight.setFlightStatus(flightStatusService.getStatus(COMPLETED_STATUS));
                 flight.setEndedAt(LocalDateTime.now());
                 break;
             case ACTIVE_STATUS:
+                flight.setFlightStatus(flightStatusService.getStatus(ACTIVE_STATUS));
                 flight.setStartedAt(LocalDateTime.now());
                 break;
             default: break;

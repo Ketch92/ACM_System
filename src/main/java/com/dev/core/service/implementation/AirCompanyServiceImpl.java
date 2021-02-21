@@ -1,6 +1,7 @@
 package com.dev.core.service.implementation;
 
 import com.dev.core.entity.AirCompany;
+import com.dev.core.entity.exception.RequestProcessingException;
 import com.dev.core.repository.AirCompanyRepository;
 import com.dev.core.service.AirCompanyService;
 import java.util.List;
@@ -22,7 +23,9 @@ public class AirCompanyServiceImpl implements AirCompanyService {
     
     @Override
     public AirCompany get(Long id) {
-        return airCompanyRepository.findById(id).orElseThrow();
+        return airCompanyRepository.findById(id)
+                .orElseThrow(() ->
+                        new RequestProcessingException("No Air company type with given id " + id));
     }
     
     @Override

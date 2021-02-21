@@ -15,6 +15,13 @@ public class CompanyType {
     private Long id;
     private String typeName;
     
+    public CompanyType() {
+    }
+    
+    public CompanyType(String typeName) {
+        this.typeName = typeName;
+    }
+    
     public Long getId() {
         return id;
     }

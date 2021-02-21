@@ -15,6 +15,13 @@ public class AirplaneType {
     private Long id;
     private String typeName;
     
+    public AirplaneType() {
+    }
+    
+    public AirplaneType(String typeName) {
+        this.typeName = typeName;
+    }
+    
     public Long getId() {
         return id;
     }
