@@ -6,7 +6,10 @@ import com.dev.core.entity.type.AirplaneType;
 import com.dev.core.repository.AirplaneRepository;
 import com.dev.core.service.AirplaneService;
 import java.util.List;
+import java.util.Set;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AirplaneServiceImpl implements AirplaneService {
     
     private final AirplaneRepository airplaneRepository;
@@ -41,17 +44,26 @@ public class AirplaneServiceImpl implements AirplaneService {
     }
     
     @Override
+    public List<Airplane> get(Set<Long> ids) {
+        return airplaneRepository.getByIds(ids);
+    }
+    
+    @Override
     public List<Airplane> getAll() {
         return airplaneRepository.findAll();
     }
     
     @Override
-    public void remove(Airplane airplane) {
-        airplaneRepository.delete(airplane);
+    public void remove(Long id) {
+        if (airplaneRepository.findById(id).isPresent()) {
+            airplaneRepository.deleteById(id);
+        }
     }
     
     @Override
     public void update(Airplane airplane) {
-        airplaneRepository.save(airplane);
+        if (airplaneRepository.findById(airplane.getId()).isPresent()) {
+            airplaneRepository.save(airplane);
+        }
     }
 }

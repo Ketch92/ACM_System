@@ -13,5 +13,5 @@ public interface AirplaneTypeService {
     
     AirplaneType get(String type);
     
-    void remove(AirplaneType airplaneType);
+    void remove(Long id);
 }

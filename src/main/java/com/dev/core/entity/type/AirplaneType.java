@@ -13,7 +13,7 @@ public class AirplaneType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String type;
+    private String typeName;
     
     public Long getId() {
         return id;
@@ -23,12 +23,12 @@ public class AirplaneType {
         this.id = id;
     }
     
-    public String getType() {
-        return type;
+    public String getTypeName() {
+        return typeName;
     }
     
-    public void setType(String type) {
-        this.type = type;
+    public void setTypeName(String type) {
+        this.typeName = type;
     }
     
     @Override
@@ -41,11 +41,11 @@ public class AirplaneType {
         }
         AirplaneType that = (AirplaneType) o;
         return Objects.equals(id, that.id)
-               && Objects.equals(type, that.type);
+               && Objects.equals(typeName, that.typeName);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(id, type);
+        return Objects.hash(id, typeName);
     }
 }

@@ -3,6 +3,7 @@ package com.dev.core.repository;
 import com.dev.core.entity.AirCompany;
 import com.dev.core.entity.Flight;
 import com.dev.core.entity.FlightStatus;
+import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -18,4 +19,9 @@ public interface FlightRepository extends JpaRepository<Flight, Long> {
     @Query("from Flight f where f.airCompany = :company and f.flightStatus = :status")
     List<Flight> getFlightByCompanyAndStatus(@Param("status") FlightStatus flightStatus,
                                              @Param("company") AirCompany airCompany);
+    
+    @Query("from Flight f where f.flightStatus.statusName = :status"
+            + " and f.startedAt > :startedBefore")
+    List<Flight> getStatusAndBeforeTimePoint(@Param("startedBefore") LocalDateTime startedBefore,
+                                             @Param("status") String status);
 }

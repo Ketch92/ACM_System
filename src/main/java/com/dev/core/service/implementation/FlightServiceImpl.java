@@ -5,8 +5,11 @@ import com.dev.core.entity.Flight;
 import com.dev.core.entity.FlightStatus;
 import com.dev.core.repository.FlightRepository;
 import com.dev.core.service.FlightService;
+import java.time.LocalDateTime;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
+@Service
 public class FlightServiceImpl implements FlightService {
     
     private final FlightRepository flightRepository;
@@ -47,11 +50,20 @@ public class FlightServiceImpl implements FlightService {
     
     @Override
     public void remove(Flight flight) {
-        flightRepository.delete(flight);
+        if (flightRepository.findById(flight.getId()).isPresent()) {
+            flightRepository.delete(flight);
+        }
     }
     
     @Override
     public void update(Flight flight) {
-        flightRepository.save(flight);
+        if (flightRepository.findById(flight.getId()).isPresent()) {
+            flightRepository.save(flight);
+        }
+    }
+    
+    @Override
+    public List<Flight> getByStatusAndStartedBefore(LocalDateTime before, String status) {
+        return flightRepository.getStatusAndBeforeTimePoint(before, status);
     }
 }

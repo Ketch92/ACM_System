@@ -16,7 +16,7 @@ public class FlightStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String status;
+    private String statusName;
     
     public Long getId() {
         return id;
@@ -26,12 +26,12 @@ public class FlightStatus {
         this.id = id;
     }
     
-    public String getStatus() {
-        return status;
+    public String getStatusName() {
+        return statusName;
     }
     
-    public void setStatus(String status) {
-        this.status = status;
+    public void setStatusName(String status) {
+        this.statusName = status;
     }
     
     @Override
@@ -43,19 +43,19 @@ public class FlightStatus {
             return false;
         }
         FlightStatus that = (FlightStatus) o;
-        return Objects.equals(id, that.id) && Objects.equals(status, that.status);
+        return Objects.equals(id, that.id) && Objects.equals(statusName, that.statusName);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(id, status);
+        return Objects.hash(id, statusName);
     }
     
     @Override
     public String toString() {
         return "FlightStatus{"
                + "id=" + id
-               + ", status='" + status + '\''
+               + ", status='" + statusName + '\''
                + '}';
     }
 }

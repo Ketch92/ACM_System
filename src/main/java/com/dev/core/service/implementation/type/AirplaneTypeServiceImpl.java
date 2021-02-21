@@ -16,7 +16,9 @@ public class AirplaneTypeServiceImpl implements AirplaneTypeService {
     
     @Override
     public AirplaneType create(AirplaneType airplaneType) {
-        return airplaneTypeRepository.save(airplaneType);
+        return airplaneTypeRepository
+                .getAirplaneTypeByType(airplaneType.getTypeName())
+                .orElseGet(() -> airplaneTypeRepository.save(airplaneType));
     }
     
     @Override
@@ -31,11 +33,13 @@ public class AirplaneTypeServiceImpl implements AirplaneTypeService {
     
     @Override
     public AirplaneType get(String type) {
-        return airplaneTypeRepository.getAirplaneTypeByType(type);
+        return airplaneTypeRepository.getAirplaneTypeByType(type).orElseThrow();
     }
     
     @Override
-    public void remove(AirplaneType airplaneType) {
-        airplaneTypeRepository.delete(airplaneType);
+    public void remove(Long id) {
+        if (airplaneTypeRepository.findById(id).isPresent()) {
+            airplaneTypeRepository.deleteById(id);
+        }
     }
 }
