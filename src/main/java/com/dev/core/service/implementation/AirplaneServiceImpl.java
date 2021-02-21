@@ -48,9 +48,9 @@ public class AirplaneServiceImpl implements AirplaneService {
     }
     
     @Override
-    public void remove(Airplane airplane) {
-        if (airplaneRepository.findById(airplane.getId()).isPresent()) {
-            airplaneRepository.delete(airplane);
+    public void remove(Long id) {
+        if (airplaneRepository.findById(id).isPresent()) {
+            airplaneRepository.deleteById(id);
         }
     }
     

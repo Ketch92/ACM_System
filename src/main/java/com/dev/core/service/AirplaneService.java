@@ -19,7 +19,7 @@ public interface AirplaneService {
     
     List<Airplane> getAll();
     
-    void remove(Airplane airplane);
+    void remove(Long id);
     
     void update(Airplane airplane);
 }
