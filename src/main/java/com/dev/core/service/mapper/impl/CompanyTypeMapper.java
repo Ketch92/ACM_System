@@ -16,14 +16,14 @@ public class CompanyTypeMapper
     public CompanyTypeRespDto mapToDto(CompanyType entity) {
         CompanyTypeRespDto dto = new CompanyTypeRespDto();
         dto.setId(entity.getId());
-        dto.setType(entity.getType());
+        dto.setType(entity.getTypeName());
         return dto;
     }
     
     @Override
     public CompanyType mapToEntity(CompanyTypeRequestDto dto) {
         CompanyType type = new CompanyType();
-        type.setType(dto.getType());
+        type.setTypeName(dto.getType());
         return type;
     }
 }

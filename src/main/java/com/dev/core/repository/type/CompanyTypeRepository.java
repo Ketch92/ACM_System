@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface CompanyTypeRepository extends JpaRepository<CompanyType, Long> {
-    @Query("from CompanyType ct where ct.type = :type")
+    @Query("from CompanyType ct where ct.typeName = :type")
     Optional<CompanyType> getCompanyTypeByTypeName(@Param("type") String type);
 }

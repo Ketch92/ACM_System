@@ -25,7 +25,7 @@ public class AirCompanyMapper
         AirCompanyRespDto dto = new AirCompanyRespDto();
         dto.setId(airCompany.getId());
         dto.setName(airCompany.getName());
-        dto.setCompanyType(airCompany.getCompanyType().getType());
+        dto.setCompanyType(airCompany.getCompanyType().getTypeName());
         dto.setFoundedAt(airCompany.getFoundedAt());
         return dto;
     }
@@ -36,7 +36,7 @@ public class AirCompanyMapper
         company.setName(dto.getName());
         company.setFoundedAt(dto.getFoundedAt());
         CompanyType type = new CompanyType();
-        type.setType(dto.getCompanyType());
+        type.setTypeName(dto.getCompanyType());
         company.setCompanyType(companyTypeService.create(type));
         return company;
     }

@@ -16,14 +16,14 @@ public class FlightStatusMapper
     public FlightStatusRespDto mapToDto(FlightStatus entity) {
         FlightStatusRespDto dto = new FlightStatusRespDto();
         dto.setId(entity.getId());
-        dto.setStatus(entity.getStatus());
+        dto.setStatus(entity.getStatusName());
         return dto;
     }
     
     @Override
     public FlightStatus mapToEntity(FlightStatusRequestDto dto) {
         FlightStatus status = new FlightStatus();
-        status.setStatus(dto.getStatus());
+        status.setStatusName(dto.getStatus());
         return status;
     }
 }

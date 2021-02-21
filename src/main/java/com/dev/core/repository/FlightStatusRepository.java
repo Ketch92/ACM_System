@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface FlightStatusRepository extends JpaRepository<FlightStatus, Long> {
-    @Query("from FlightStatus fs where fs.status = :status")
+    @Query("from FlightStatus fs where fs.statusName = :status")
     Optional<FlightStatus> getFlightStatusByName(@Param("status") String status);
 }

@@ -27,7 +27,7 @@ public class FlightStatusServiceImpl implements FlightStatusService {
     @Override
     public FlightStatus create(FlightStatus flightStatus) {
         return flightStatusRepository
-                .getFlightStatusByName(flightStatus.getStatus())
+                .getFlightStatusByName(flightStatus.getStatusName())
                 .orElseGet(() -> flightStatusRepository.save(flightStatus));
     }
     

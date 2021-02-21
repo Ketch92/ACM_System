@@ -4,7 +4,6 @@ import com.dev.core.entity.type.CompanyType;
 import com.dev.core.repository.type.CompanyTypeRepository;
 import com.dev.core.service.type.CompanyTypeService;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,7 +18,7 @@ public class CompanyTypeServiceImpl implements CompanyTypeService {
     @Override
     public CompanyType create(CompanyType companyType) {
         return companyTypeRepository
-                .getCompanyTypeByTypeName(companyType.getType())
+                .getCompanyTypeByTypeName(companyType.getTypeName())
                 .orElseGet(() -> companyTypeRepository.save(companyType));
     }
     

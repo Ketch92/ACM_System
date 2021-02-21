@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/air-companies")
 public class AirCompanyController {
-    
     private final AirCompanyService companyService;
     private final AirCompanyMapper mapper;
     

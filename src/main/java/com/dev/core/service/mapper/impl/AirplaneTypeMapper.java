@@ -16,14 +16,14 @@ implements ToDtoMapper<AirplaneType, AirplaneTypeRespDto>,
     public AirplaneTypeRespDto mapToDto(AirplaneType type) {
         AirplaneTypeRespDto dto = new AirplaneTypeRespDto();
         dto.setId(type.getId());
-        dto.setType(type.getType());
+        dto.setType(type.getTypeName());
         return dto;
     }
     
     @Override
     public AirplaneType mapToEntity(AirplaneTypeRequestDto dto) {
         AirplaneType type = new AirplaneType();
-        type.setType(dto.getType());
+        type.setTypeName(dto.getType());
         return type;
     }
 }
