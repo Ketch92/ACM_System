@@ -7,6 +7,7 @@ import com.dev.core.service.AirCompanyService;
 import com.dev.core.service.mapper.impl.AirCompanyMapper;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.validation.Valid;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -52,12 +53,12 @@ public class AirCompanyController {
     }
     
     @PostMapping
-    public void addCompany(@RequestBody AirCompanyRequestDto dto) {
+    public void addCompany(@RequestBody @Valid AirCompanyRequestDto dto) {
         companyService.create(mapper.mapToEntity(dto));
     }
     
     @PutMapping("/{id}")
-    public void updateCompany(@RequestBody AirCompanyRequestDto dto,
+    public void updateCompany(@RequestBody @Valid AirCompanyRequestDto dto,
                               @PathVariable Long id) {
         AirCompany company = mapper.mapToEntity(dto);
         company.setId(id);

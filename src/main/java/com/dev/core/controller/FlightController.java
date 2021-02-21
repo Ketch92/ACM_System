@@ -12,6 +12,7 @@ import com.dev.core.service.mapper.impl.FlightMapper;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.validation.Valid;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -59,7 +60,7 @@ public class FlightController {
     }
     
     @PostMapping
-    public void addFlight(@RequestBody FlightRequestDto dto) {
+    public void addFlight(@RequestBody @Valid FlightRequestDto dto) {
         Flight flight = mapper.mapToEntity(dto);
         flight.setFlightStatus(flightStatusService.getStatus(PENDING_STATUS));
         flightService.create(flight);

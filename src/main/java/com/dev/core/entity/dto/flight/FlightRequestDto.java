@@ -1,18 +1,31 @@
 package com.dev.core.entity.dto.flight;
 
+import com.sun.istack.NotNull;
 import java.util.Set;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 
 public class FlightRequestDto {
-    private String flightStatusId;
-    private String airCompanyId;
+    @NotNull
+    private Long flightStatusId;
+    @NotNull
+    private Long airCompanyId;
     private Set<Long> airplaneIds;
+    @NotNull
+    @NotBlank
     private String departureCountry;
+    @NotNull
+    @NotBlank
     private String destinationCountry;
+    @Positive
     private int distance;
+    @Positive
     private int estimatedFlightTime;
     private String startedAt;
     private String endedAt;
     private String delayStartedAt;
+    @NotNull
+    @NotBlank
     private String createdAt;
     
     public String getStartedAt() {
@@ -23,19 +36,19 @@ public class FlightRequestDto {
         this.startedAt = startedAt;
     }
     
-    public String getFlightStatusId() {
+    public Long getFlightStatusId() {
         return flightStatusId;
     }
     
-    public void setFlightStatusId(String flightStatusId) {
+    public void setFlightStatusId(Long flightStatusId) {
         this.flightStatusId = flightStatusId;
     }
     
-    public String getAirCompanyId() {
+    public Long getAirCompanyId() {
         return airCompanyId;
     }
     
-    public void setAirCompanyId(String airCompanyId) {
+    public void setAirCompanyId(Long airCompanyId) {
         this.airCompanyId = airCompanyId;
     }
     

@@ -1,8 +1,17 @@
 package com.dev.core.entity.dto.company;
 
+import com.sun.istack.NotNull;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+
 public class AirCompanyRequestDto {
+    @NotNull
+    @NotBlank
     private String name;
+    @NotNull
+    @NotBlank
     private String companyType;
+    @Min(1900)
     private int foundedAt;
     
     public String getName() {

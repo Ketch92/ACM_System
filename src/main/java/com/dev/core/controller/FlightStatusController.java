@@ -6,6 +6,7 @@ import com.dev.core.service.FlightStatusService;
 import com.dev.core.service.mapper.impl.FlightStatusMapper;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.validation.Valid;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -50,7 +51,7 @@ public class FlightStatusController {
     }
     
     @PostMapping
-    public void addNewType(@RequestBody FlightStatusRequestDto dto) {
+    public void addNewType(@RequestBody @Valid FlightStatusRequestDto dto) {
         flightStatusService.create(mapper.mapToEntity(dto));
     }
 }
