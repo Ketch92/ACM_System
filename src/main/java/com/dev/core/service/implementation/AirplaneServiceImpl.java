@@ -6,6 +6,7 @@ import com.dev.core.entity.type.AirplaneType;
 import com.dev.core.repository.AirplaneRepository;
 import com.dev.core.service.AirplaneService;
 import java.util.List;
+import java.util.Set;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -45,6 +46,11 @@ public class AirplaneServiceImpl implements AirplaneService {
     @Override
     public List<Airplane> getAll() {
         return airplaneRepository.findAll();
+    }
+    
+    @Override
+    public List<Airplane> get(Set<Long> ids) {
+        return airplaneRepository.getByIds(ids);
     }
     
     @Override

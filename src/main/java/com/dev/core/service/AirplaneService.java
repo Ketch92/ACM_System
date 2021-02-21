@@ -4,6 +4,7 @@ import com.dev.core.entity.AirCompany;
 import com.dev.core.entity.Airplane;
 import com.dev.core.entity.type.AirplaneType;
 import java.util.List;
+import java.util.Set;
 
 public interface AirplaneService {
     
@@ -18,6 +19,8 @@ public interface AirplaneService {
     List<Airplane> get(AirplaneType airplaneType);
     
     List<Airplane> getAll();
+    
+    List<Airplane> get(Set<Long> ids);
     
     void remove(Long id);
     

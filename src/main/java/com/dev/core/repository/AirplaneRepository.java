@@ -4,6 +4,7 @@ import com.dev.core.entity.AirCompany;
 import com.dev.core.entity.Airplane;
 import com.dev.core.entity.type.AirplaneType;
 import java.util.List;
+import java.util.Set;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -19,4 +20,7 @@ public interface AirplaneRepository
     
     @Query("from Airplane a where a.airplaneType = :type")
     List<Airplane> getByType(@Param("type") AirplaneType airplaneType);
+    
+    @Query("select a from Airplane a where a.id in :ids")
+    List<Airplane> getByIds(@Param("ids") Set<Long> ids);
 }
