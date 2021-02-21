@@ -56,6 +56,8 @@ public class AirplaneServiceImpl implements AirplaneService {
     
     @Override
     public void update(Airplane airplane) {
-        airplaneRepository.save(airplane);
+        if (airplaneRepository.findById(airplane.getId()).isPresent()) {
+            airplaneRepository.save(airplane);
+        }
     }
 }

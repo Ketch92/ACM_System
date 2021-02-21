@@ -54,4 +54,11 @@ public class FlightServiceImpl implements FlightService {
             flightRepository.delete(flight);
         }
     }
+    
+    @Override
+    public void update(Flight flight) {
+        if (flightRepository.findById(flight.getId()).isPresent()) {
+            flightRepository.save(flight);
+        }
+    }
 }

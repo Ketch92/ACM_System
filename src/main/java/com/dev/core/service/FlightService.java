@@ -20,4 +20,6 @@ public interface FlightService {
     List<Flight> getAll();
     
     void remove(Flight flight);
+    
+    void update(Flight flight);
 }
