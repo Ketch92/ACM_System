@@ -45,6 +45,7 @@ public class FlightMapper
         dto.setDestinationCountry(flight.getDestinationCountry());
         dto.setDistance(flight.getDistance());
         dto.setEstimatedFlightTime(flight.getEstimatedFlightTime());
+        dto.setStartedAt(flight.getStartedAt().toString());
         dto.setDelayStartedAt(flight.getDelayStartedAt().toString());
         dto.setEndedAt(flight.getEndedAt().toString());
         dto.setCreatedAt(flight.getCreatedAt().toString());
@@ -58,6 +59,7 @@ public class FlightMapper
         flight.setAirCompany(companyService.get(dto.getAirCompanyId()));
         flight.setAirplanes(airplaneService.get(dto.getAirplaneIds()));
         flight.setCreatedAt(LocalDateTime.parse(dto.getCreatedAt()));
+        flight.setStartedAt(LocalDateTime.parse(dto.getStartedAt()));
         flight.setDelayStartedAt(LocalDateTime.parse(dto.getDelayStartedAt()));
         flight.setEndedAt(LocalDateTime.parse(dto.getEndedAt()));
         flight.setDepartureCountry(dto.getDepartureCountry());

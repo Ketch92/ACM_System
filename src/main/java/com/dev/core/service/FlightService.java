@@ -3,6 +3,7 @@ package com.dev.core.service;
 import com.dev.core.entity.AirCompany;
 import com.dev.core.entity.Flight;
 import com.dev.core.entity.FlightStatus;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface FlightService {
@@ -18,6 +19,8 @@ public interface FlightService {
     List<Flight> get(FlightStatus flightStatus, AirCompany airCompany);
     
     List<Flight> getAll();
+    
+    List<Flight> getByStatusAndStartedBefore(LocalDateTime before, String status);
     
     void remove(Flight flight);
     

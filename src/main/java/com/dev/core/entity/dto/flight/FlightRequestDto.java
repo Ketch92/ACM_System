@@ -10,9 +10,18 @@ public class FlightRequestDto {
     private String destinationCountry;
     private int distance;
     private int estimatedFlightTime;
+    private String startedAt;
     private String endedAt;
     private String delayStartedAt;
     private String createdAt;
+    
+    public String getStartedAt() {
+        return startedAt;
+    }
+    
+    public void setStartedAt(String startedAt) {
+        this.startedAt = startedAt;
+    }
     
     public String getFlightStatusId() {
         return flightStatusId;

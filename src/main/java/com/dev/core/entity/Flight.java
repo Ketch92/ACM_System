@@ -34,12 +34,22 @@ public class Flight {
     private int distance;
     @Column(name = "estimated_flight_time")
     private int estimatedFlightTime;
+    @Column(name = "started_at")
+    private LocalDateTime startedAt;
     @Column(name = "ended_at")
     private LocalDateTime endedAt;
     @Column(name = "delay_started_at")
     private LocalDateTime delayStartedAt;
     @Column(name = "created_at")
     private LocalDateTime createdAt;
+    
+    public LocalDateTime getStartedAt() {
+        return startedAt;
+    }
+    
+    public void setStartedAt(LocalDateTime startedAt) {
+        this.startedAt = startedAt;
+    }
     
     public Long getId() {
         return id;
