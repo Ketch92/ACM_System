@@ -1,0 +1,537 @@
+{
+	"info": {
+		"_postman_id": "ce4919e0-e121-4473-b653-f9651d4e4c51",
+		"name": "ACM_system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AirCompanies",
+			"item": [
+				{
+					"name": "localhost:8080/air-companies/1",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"NewBoss\",\r\n    \"companyType\":\"Long distance\",\r\n    \"foundedAt\":2000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/air-companies/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"air-companies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/air-companies",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Boss\",\r\n    \"companyType\":\"LowCost\",\r\n    \"foundedAt\": 2010\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/air-companies",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"air-companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/air-companies",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/air-companies",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"air-companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/air-companies/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/air-companies/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"air-companies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/air-companies/1",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/air-companies/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"air-companies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AirplaneTypes",
+			"item": [
+				{
+					"name": "localhost:8080/airplane-types",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\":\"short distance\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/airplane-types",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"airplane-types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/airplane-types",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/airplane-types",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"airplane-types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/airplane-types/byName?name=short distance",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/airplane-types/byName?name=short distance",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"airplane-types",
+								"byName"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "short distance"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/airplane-types/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/airplane-types/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"airplane-types",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/airplane-types/2",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/airplane-types/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"airplane-types",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Airplanes",
+			"item": [
+				{
+					"name": "localhost:8080/airplanes/1?companyId=1",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/airplanes/1?companyId=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"airplanes",
+								"1"
+							],
+							"query": [
+								{
+									"key": "companyId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/airplanes",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"A320\",\r\n    \"airplaneTypeId\":1,\r\n    \"factorySerialNumber\":\"fhdaj1y543\",\r\n    \"airCompanyId\":1,\r\n    \"numberOfFlights\":0,\r\n    \"flightDistance\":100,\r\n    \"fuelCapacity\":15156,\r\n    \"createdAt\":2000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/airplanes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"airplanes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/airplanes/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/airplanes/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"airplanes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/airplanes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/airplanes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"airplanes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CompanyTypes",
+			"item": [
+				{
+					"name": "localhost:8080/company-types",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/company-types",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"company-types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/company-types/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/company-types/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"company-types",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/company-types",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\":\"Starter\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/company-types",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"company-types"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Flights",
+			"item": [
+				{
+					"name": "localhost:8080/flights",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"flightStatusId\":1,\r\n    \"airCompanyId\":1,\r\n    \"airplaneIds\":null,\r\n    \"departureCountry\":\"Ukraine\",\r\n    \"destinationCountry\":\"Poland\",\r\n    \"distance\":500,\r\n    \"estimatedFlightTime\":56,\r\n    \"createdAt\":\"2018-01-21T12:01:34.519\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/flights",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flights"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/flights/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/flights/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flights",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/flights/1?status=ACTIVE",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/flights/1?status=ACTIVE",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flights",
+								"1"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "ACTIVE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/flights/active/24",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/flights/active/24",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flights",
+								"active",
+								"24"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/flights?company=Boss&status=PENDING",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/flights?company=Boss&status=PENDING",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flights"
+							],
+							"query": [
+								{
+									"key": "company",
+									"value": "Boss"
+								},
+								{
+									"key": "status",
+									"value": "PENDING"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
