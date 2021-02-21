@@ -44,7 +44,7 @@ public class FlightController {
         this.mapper = mapper;
     }
     
-    @GetMapping("/")
+    @GetMapping
     public List<FlightRespDto> getByCompanyAndStatus(@RequestParam String company,
                                                      @RequestParam String status) {
         AirCompany airCompany = companyService.get(company);
@@ -79,12 +79,15 @@ public class FlightController {
         Flight flight = flightService.get(id);
         switch (status) {
             case DELAYED_STATUS:
+                flight.setFlightStatus(flightStatusService.getStatus(DELAYED_STATUS));
                 flight.setDelayStartedAt(LocalDateTime.now());
                 break;
             case COMPLETED_STATUS:
+                flight.setFlightStatus(flightStatusService.getStatus(COMPLETED_STATUS));
                 flight.setEndedAt(LocalDateTime.now());
                 break;
             case ACTIVE_STATUS:
+                flight.setFlightStatus(flightStatusService.getStatus(ACTIVE_STATUS));
                 flight.setStartedAt(LocalDateTime.now());
                 break;
             default: break;

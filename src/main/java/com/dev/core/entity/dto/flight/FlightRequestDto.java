@@ -21,20 +21,9 @@ public class FlightRequestDto {
     private int distance;
     @Positive
     private int estimatedFlightTime;
-    private String startedAt;
-    private String endedAt;
-    private String delayStartedAt;
     @NotNull
     @NotBlank
     private String createdAt;
-    
-    public String getStartedAt() {
-        return startedAt;
-    }
-    
-    public void setStartedAt(String startedAt) {
-        this.startedAt = startedAt;
-    }
     
     public Long getFlightStatusId() {
         return flightStatusId;
@@ -90,22 +79,6 @@ public class FlightRequestDto {
     
     public void setEstimatedFlightTime(int estimatedFlightTime) {
         this.estimatedFlightTime = estimatedFlightTime;
-    }
-    
-    public String getEndedAt() {
-        return endedAt;
-    }
-    
-    public void setEndedAt(String endedAt) {
-        this.endedAt = endedAt;
-    }
-    
-    public String getDelayStartedAt() {
-        return delayStartedAt;
-    }
-    
-    public void setDelayStartedAt(String delayStartedAt) {
-        this.delayStartedAt = delayStartedAt;
     }
     
     public String getCreatedAt() {

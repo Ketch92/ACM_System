@@ -1,5 +1,6 @@
 package com.dev.core.service.implementation.type;
 
+import com.dev.core.entity.exception.RequestProcessingException;
 import com.dev.core.entity.type.AirplaneType;
 import com.dev.core.repository.type.AirplaneTypeRepository;
 import com.dev.core.service.type.AirplaneTypeService;
@@ -42,7 +43,9 @@ public class AirplaneTypeServiceImpl implements AirplaneTypeService {
     
     @Override
     public AirplaneType get(Long id) {
-        return airplaneTypeRepository.getOne(id);
+        return airplaneTypeRepository.findById(id)
+                .orElseThrow(() ->
+                        new RequestProcessingException("No airplane type with given id " + id));
     }
     
     @Override

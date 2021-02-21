@@ -1,5 +1,6 @@
 package com.dev.core.service.implementation.type;
 
+import com.dev.core.entity.exception.RequestProcessingException;
 import com.dev.core.entity.type.CompanyType;
 import com.dev.core.repository.type.CompanyTypeRepository;
 import com.dev.core.service.type.CompanyTypeService;
@@ -36,7 +37,9 @@ public class CompanyTypeServiceImpl implements CompanyTypeService {
     
     @Override
     public CompanyType get(Long id) {
-        return companyTypeRepository.getOne(id);
+        return companyTypeRepository.findById(id)
+                .orElseThrow(() ->
+                        new RequestProcessingException("No company type with given id " + id));
     }
     
     @Override

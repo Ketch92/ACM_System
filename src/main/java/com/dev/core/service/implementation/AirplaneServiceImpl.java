@@ -2,6 +2,7 @@ package com.dev.core.service.implementation;
 
 import com.dev.core.entity.AirCompany;
 import com.dev.core.entity.Airplane;
+import com.dev.core.entity.exception.RequestProcessingException;
 import com.dev.core.entity.type.AirplaneType;
 import com.dev.core.repository.AirplaneRepository;
 import com.dev.core.service.AirplaneService;
@@ -25,7 +26,9 @@ public class AirplaneServiceImpl implements AirplaneService {
     
     @Override
     public Airplane get(Long id) {
-        return airplaneRepository.getOne(id);
+        return airplaneRepository.findById(id)
+                .orElseThrow(() ->
+                        new RequestProcessingException("No airplane with given id " + id));
     }
     
     @Override

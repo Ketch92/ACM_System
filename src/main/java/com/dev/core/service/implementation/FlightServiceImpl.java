@@ -3,6 +3,7 @@ package com.dev.core.service.implementation;
 import com.dev.core.entity.AirCompany;
 import com.dev.core.entity.Flight;
 import com.dev.core.entity.FlightStatus;
+import com.dev.core.entity.exception.RequestProcessingException;
 import com.dev.core.repository.FlightRepository;
 import com.dev.core.service.FlightService;
 import java.time.LocalDateTime;
@@ -25,7 +26,9 @@ public class FlightServiceImpl implements FlightService {
     
     @Override
     public Flight get(Long id) {
-        return flightRepository.getOne(id);
+        return flightRepository.findById(id)
+                .orElseThrow(() ->
+                        new RequestProcessingException("No flight with given id " + id));
     }
     
     @Override

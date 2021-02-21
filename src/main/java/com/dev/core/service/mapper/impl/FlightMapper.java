@@ -9,6 +9,7 @@ import com.dev.core.service.FlightStatusService;
 import com.dev.core.service.mapper.ToDtoMapper;
 import com.dev.core.service.mapper.ToEntityMapper;
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
@@ -44,9 +45,12 @@ public class FlightMapper
         dto.setDestinationCountry(flight.getDestinationCountry());
         dto.setDistance(flight.getDistance());
         dto.setEstimatedFlightTime(flight.getEstimatedFlightTime());
-        dto.setStartedAt(flight.getStartedAt().toString());
-        dto.setDelayStartedAt(flight.getDelayStartedAt().toString());
-        dto.setEndedAt(flight.getEndedAt().toString());
+        dto.setStartedAt(Optional.ofNullable(flight.getStartedAt())
+                .map(LocalDateTime::toString).orElse(""));
+        dto.setDelayStartedAt(Optional.ofNullable(flight.getDelayStartedAt())
+                .map(LocalDateTime::toString).orElse(""));
+        dto.setEndedAt(Optional.ofNullable(flight.getEndedAt())
+                .map(LocalDateTime::toString).orElse(""));
         dto.setCreatedAt(flight.getCreatedAt().toString());
         return dto;
     }
@@ -58,9 +62,6 @@ public class FlightMapper
         flight.setAirCompany(companyService.get(dto.getAirCompanyId()));
         flight.setAirplanes(airplaneService.get(dto.getAirplaneIds()));
         flight.setCreatedAt(LocalDateTime.parse(dto.getCreatedAt()));
-        flight.setStartedAt(LocalDateTime.parse(dto.getStartedAt()));
-        flight.setDelayStartedAt(LocalDateTime.parse(dto.getDelayStartedAt()));
-        flight.setEndedAt(LocalDateTime.parse(dto.getEndedAt()));
         flight.setDepartureCountry(dto.getDepartureCountry());
         flight.setDestinationCountry(dto.getDestinationCountry());
         flight.setDistance(dto.getDistance());
