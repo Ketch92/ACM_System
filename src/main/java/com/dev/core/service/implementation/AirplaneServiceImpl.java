@@ -44,13 +44,13 @@ public class AirplaneServiceImpl implements AirplaneService {
     }
     
     @Override
-    public List<Airplane> getAll() {
-        return airplaneRepository.findAll();
+    public List<Airplane> get(Set<Long> ids) {
+        return airplaneRepository.getByIds(ids);
     }
     
     @Override
-    public List<Airplane> get(Set<Long> ids) {
-        return airplaneRepository.getByIds(ids);
+    public List<Airplane> getAll() {
+        return airplaneRepository.findAll();
     }
     
     @Override

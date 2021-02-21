@@ -20,7 +20,8 @@ public interface FlightRepository extends JpaRepository<Flight, Long> {
     List<Flight> getFlightByCompanyAndStatus(@Param("status") FlightStatus flightStatus,
                                              @Param("company") AirCompany airCompany);
     
-    @Query("from Flight f where f.flightStatus.statusName = :status and f.startedAt > :startedBefore")
-    List<Flight> getStatusAndBeforeTimePoint(@Param("startedBefore")LocalDateTime startedBefore,
+    @Query("from Flight f where f.flightStatus.statusName = :status"
+            + " and f.startedAt > :startedBefore")
+    List<Flight> getStatusAndBeforeTimePoint(@Param("startedBefore") LocalDateTime startedBefore,
                                              @Param("status") String status);
 }

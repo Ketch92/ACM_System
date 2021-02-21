@@ -27,7 +27,6 @@ public class CompanyTypeController {
         this.mapper = mapper;
     }
     
-    
     @GetMapping("/{id}")
     public CompanyTypeRespDto get(@PathVariable Long id) {
         return mapper.mapToDto(companyTypeService.get(id));

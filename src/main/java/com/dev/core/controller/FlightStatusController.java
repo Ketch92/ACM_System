@@ -2,12 +2,8 @@ package com.dev.core.controller;
 
 import com.dev.core.entity.dto.status.FlightStatusRequestDto;
 import com.dev.core.entity.dto.status.FlightStatusRespDto;
-import com.dev.core.entity.dto.type.company.CompanyTypeRequestDto;
-import com.dev.core.entity.dto.type.company.CompanyTypeRespDto;
 import com.dev.core.service.FlightStatusService;
-import com.dev.core.service.mapper.impl.CompanyTypeMapper;
 import com.dev.core.service.mapper.impl.FlightStatusMapper;
-import com.dev.core.service.type.CompanyTypeService;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,7 +21,8 @@ public class FlightStatusController {
     private final FlightStatusService flightStatusService;
     private final FlightStatusMapper mapper;
     
-    public FlightStatusController(FlightStatusService flightStatusService, FlightStatusMapper mapper) {
+    public FlightStatusController(FlightStatusService flightStatusService,
+                                  FlightStatusMapper mapper) {
         this.flightStatusService = flightStatusService;
         this.mapper = mapper;
     }

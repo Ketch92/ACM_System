@@ -18,9 +18,9 @@ public interface AirplaneService {
     
     List<Airplane> get(AirplaneType airplaneType);
     
-    List<Airplane> getAll();
-    
     List<Airplane> get(Set<Long> ids);
+    
+    List<Airplane> getAll();
     
     void remove(Long id);
     

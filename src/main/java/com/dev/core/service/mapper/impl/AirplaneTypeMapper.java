@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AirplaneTypeMapper
-implements ToDtoMapper<AirplaneType, AirplaneTypeRespDto>,
+        implements ToDtoMapper<AirplaneType, AirplaneTypeRespDto>,
         ToEntityMapper<AirplaneTypeRequestDto, AirplaneType> {
     
     @Override

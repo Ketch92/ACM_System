@@ -1,7 +1,6 @@
 package com.dev.core.service.mapper.impl;
 
 import com.dev.core.entity.Flight;
-import com.dev.core.entity.FlightStatus;
 import com.dev.core.entity.dto.flight.FlightRequestDto;
 import com.dev.core.entity.dto.flight.FlightRespDto;
 import com.dev.core.service.AirCompanyService;

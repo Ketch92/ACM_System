@@ -6,7 +6,6 @@ import com.dev.core.entity.FlightStatus;
 import com.dev.core.entity.dto.flight.FlightRequestDto;
 import com.dev.core.entity.dto.flight.FlightRespDto;
 import com.dev.core.service.AirCompanyService;
-import com.dev.core.service.AirplaneService;
 import com.dev.core.service.FlightService;
 import com.dev.core.service.FlightStatusService;
 import com.dev.core.service.mapper.impl.FlightMapper;
@@ -30,18 +29,15 @@ public class FlightController {
     private static final String DELAYED_STATUS = "DELAYED";
     private static final String COMPLETED_STATUS = "COMPLETED";
     private final FlightService flightService;
-    private final AirplaneService airplaneService;
     private final AirCompanyService companyService;
     private final FlightStatusService flightStatusService;
     private final FlightMapper mapper;
     
     public FlightController(FlightService flightService,
-                            AirplaneService airplaneService,
                             AirCompanyService companyService,
                             FlightStatusService flightStatusService,
                             FlightMapper mapper) {
         this.flightService = flightService;
-        this.airplaneService = airplaneService;
         this.companyService = companyService;
         this.flightStatusService = flightStatusService;
         this.mapper = mapper;
@@ -89,6 +85,8 @@ public class FlightController {
                 break;
             case ACTIVE_STATUS:
                 flight.setStartedAt(LocalDateTime.now());
+                break;
+            default: break;
         }
         flightService.update(flight);
     }

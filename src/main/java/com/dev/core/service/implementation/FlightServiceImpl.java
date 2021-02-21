@@ -7,7 +7,6 @@ import com.dev.core.repository.FlightRepository;
 import com.dev.core.service.FlightService;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 @Service

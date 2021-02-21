@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AirplaneMapper
-implements ToDtoMapper<Airplane, AirplaneRespDto>,
+        implements ToDtoMapper<Airplane, AirplaneRespDto>,
         ToEntityMapper<AirplaneRequestDto, Airplane> {
     private final AirCompanyService companyService;
     private final AirplaneTypeService airplaneTypeService;
@@ -21,7 +21,6 @@ implements ToDtoMapper<Airplane, AirplaneRespDto>,
         this.companyService = companyService;
         this.airplaneTypeService = airplaneTypeService;
     }
-    
     
     @Override
     public Airplane mapToEntity(AirplaneRequestDto dto) {

@@ -16,7 +16,7 @@ public class AirplaneTypeServiceImpl implements AirplaneTypeService {
     
     @Override
     public AirplaneType create(AirplaneType airplaneType) {
-        return  airplaneTypeRepository
+        return airplaneTypeRepository
                 .getAirplaneTypeByType(airplaneType.getTypeName())
                 .orElseGet(() -> airplaneTypeRepository.save(airplaneType));
     }

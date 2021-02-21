@@ -2,7 +2,6 @@ package com.dev.core.controller;
 
 import com.dev.core.entity.dto.type.airplane.AirplaneTypeRequestDto;
 import com.dev.core.entity.dto.type.airplane.AirplaneTypeRespDto;
-import com.dev.core.service.implementation.type.AirplaneTypeServiceImpl;
 import com.dev.core.service.mapper.impl.AirplaneTypeMapper;
 import com.dev.core.service.type.AirplaneTypeService;
 import java.util.List;
