@@ -12,13 +12,13 @@ public interface AirplaneService {
     
     Airplane get(Long id);
     
-    List<Airplane> get(String name);
+    List<Airplane> getByName(String name);
     
-    List<Airplane> get(AirCompany airCompany);
+    List<Airplane> getByAirCompany(AirCompany airCompany);
     
-    List<Airplane> get(AirplaneType airplaneType);
+    List<Airplane> getByType(AirplaneType airplaneType);
     
-    List<Airplane> get(Set<Long> ids);
+    List<Airplane> getByIds(Set<Long> ids);
     
     List<Airplane> getAll();
     

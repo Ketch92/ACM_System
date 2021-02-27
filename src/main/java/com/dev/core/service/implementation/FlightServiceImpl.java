@@ -32,17 +32,17 @@ public class FlightServiceImpl implements FlightService {
     }
     
     @Override
-    public List<Flight> get(FlightStatus flightStatus) {
+    public List<Flight> getByStatus(FlightStatus flightStatus) {
         return flightRepository.getFlightByStatus(flightStatus);
     }
     
     @Override
-    public List<Flight> get(AirCompany airCompany) {
+    public List<Flight> getByAirCompany(AirCompany airCompany) {
         return flightRepository.getFlightByCompany(airCompany);
     }
     
     @Override
-    public List<Flight> get(FlightStatus flightStatus, AirCompany airCompany) {
+    public List<Flight> getByStatusAndCompany(FlightStatus flightStatus, AirCompany airCompany) {
         return flightRepository.getFlightByCompanyAndStatus(flightStatus, airCompany);
     }
     

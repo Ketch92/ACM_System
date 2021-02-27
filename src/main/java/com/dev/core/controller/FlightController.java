@@ -47,9 +47,9 @@ public class FlightController {
     @GetMapping
     public List<FlightResponseDto> getByCompanyAndStatus(@RequestParam String company,
                                                          @RequestParam String status) {
-        AirCompany airCompany = companyService.get(company);
-        FlightStatus flightStatus = flightStatusService.getStatus(status);
-        return flightService.get(flightStatus, airCompany).stream()
+        AirCompany airCompany = companyService.getByCompanyName(company);
+        FlightStatus flightStatus = flightStatusService.getByStatusTitle(status);
+        return flightService.getByStatusAndCompany(flightStatus, airCompany).stream()
                 .map(mapper::mapToDto)
                 .collect(Collectors.toList());
     }
@@ -62,7 +62,7 @@ public class FlightController {
     @PostMapping
     public void addFlight(@RequestBody @Valid FlightRequestDto dto) {
         Flight flight = mapper.mapToEntity(dto);
-        flight.setFlightStatus(flightStatusService.getStatus(PENDING_STATUS));
+        flight.setFlightStatus(flightStatusService.getByStatusTitle(PENDING_STATUS));
         flightService.create(flight);
     }
     
@@ -79,15 +79,15 @@ public class FlightController {
         Flight flight = flightService.get(id);
         switch (status) {
             case DELAYED_STATUS:
-                flight.setFlightStatus(flightStatusService.getStatus(DELAYED_STATUS));
+                flight.setFlightStatus(flightStatusService.getByStatusTitle(DELAYED_STATUS));
                 flight.setDelayStartedAt(LocalDateTime.now());
                 break;
             case COMPLETED_STATUS:
-                flight.setFlightStatus(flightStatusService.getStatus(COMPLETED_STATUS));
+                flight.setFlightStatus(flightStatusService.getByStatusTitle(COMPLETED_STATUS));
                 flight.setEndedAt(LocalDateTime.now());
                 break;
             case ACTIVE_STATUS:
-                flight.setFlightStatus(flightStatusService.getStatus(ACTIVE_STATUS));
+                flight.setFlightStatus(flightStatusService.getByStatusTitle(ACTIVE_STATUS));
                 flight.setStartedAt(LocalDateTime.now());
                 break;
             default: break;

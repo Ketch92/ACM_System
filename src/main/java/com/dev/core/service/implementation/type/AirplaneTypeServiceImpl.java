@@ -29,14 +29,13 @@ public class AirplaneTypeServiceImpl implements AirplaneTypeService {
     }
     
     @Override
-    public AirplaneType get(Long id) {
+    public AirplaneType getById(Long id) {
         return airplaneTypeRepository.findById(id)
                 .orElseThrow(() ->
                         new RequestProcessingException("No airplane type with given id " + id));
     }
     
-    @Override
-    public AirplaneType get(String type) {
+    public AirplaneType getByType(String type) {
         return airplaneTypeRepository.getAirplaneTypeByType(type).orElseThrow();
     }
     

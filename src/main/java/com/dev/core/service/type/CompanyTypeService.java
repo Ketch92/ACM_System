@@ -8,7 +8,7 @@ public interface CompanyTypeService {
     
     CompanyType get(Long id);
     
-    CompanyType get(String type);
+    CompanyType getByType(String type);
     
     List<CompanyType> getAll();
     

@@ -29,7 +29,7 @@ public class AirCompanyServiceImpl implements AirCompanyService {
     }
     
     @Override
-    public AirCompany get(String companyName) {
+    public AirCompany getByCompanyName(String companyName) {
         return airCompanyRepository.getByName(companyName).orElseThrow();
     }
     

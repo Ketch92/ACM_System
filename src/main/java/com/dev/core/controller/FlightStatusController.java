@@ -30,12 +30,12 @@ public class FlightStatusController {
     
     @GetMapping("/{id}")
     public FlightStatusResponseDto get(@PathVariable Long id) {
-        return mapper.mapToDto(flightStatusService.getStatus(id));
+        return mapper.mapToDto(flightStatusService.getById(id));
     }
     
     @GetMapping("/byName")
     public FlightStatusResponseDto get(@RequestParam String name) {
-        return mapper.mapToDto(flightStatusService.getStatus(name));
+        return mapper.mapToDto(flightStatusService.getByStatusTitle(name));
     }
     
     @GetMapping

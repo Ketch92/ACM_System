@@ -59,9 +59,9 @@ public class FlightMapper
     @Override
     public Flight mapToEntity(FlightRequestDto dto) {
         Flight flight = new Flight();
-        flight.setFlightStatus(flightStatusService.getStatus(dto.getFlightStatusId()));
+        flight.setFlightStatus(flightStatusService.getById(dto.getFlightStatusId()));
         flight.setAirCompany(companyService.get(dto.getAirCompanyId()));
-        flight.setAirplanes(airplaneService.get(dto.getAirplaneIds()));
+        flight.setAirplanes(airplaneService.getByIds(dto.getAirplaneIds()));
         flight.setCreatedAt(LocalDate.parse(dto.getCreatedAt()));
         flight.setDepartureCountry(dto.getDepartureCountry());
         flight.setDestinationCountry(dto.getDestinationCountry());

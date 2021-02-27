@@ -30,12 +30,12 @@ public class AirplaneTypeController {
     
     @GetMapping("/{id}")
     public AirplaneTypeResponseDto get(@PathVariable Long id) {
-        return mapper.mapToDto(airplaneTypeService.get(id));
+        return mapper.mapToDto(airplaneTypeService.getById(id));
     }
     
     @GetMapping("/byName")
     public AirplaneTypeResponseDto get(@RequestParam String name) {
-        return mapper.mapToDto(airplaneTypeService.get(name));
+        return mapper.mapToDto(airplaneTypeService.getByType(name));
     }
     
     @GetMapping

@@ -12,11 +12,11 @@ public interface FlightService {
     
     Flight get(Long id);
     
-    List<Flight> get(FlightStatus flightStatus);
+    List<Flight> getByStatus(FlightStatus flightStatus);
     
-    List<Flight> get(AirCompany airCompany);
+    List<Flight> getByAirCompany(AirCompany airCompany);
     
-    List<Flight> get(FlightStatus flightStatus, AirCompany airCompany);
+    List<Flight> getByStatusAndCompany(FlightStatus flightStatus, AirCompany airCompany);
     
     List<Flight> getAll();
     

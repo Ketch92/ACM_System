@@ -35,7 +35,7 @@ public class CompanyTypeController {
     
     @GetMapping("/byName")
     public CompanyTypeResponseDto get(@RequestParam String name) {
-        return mapper.mapToDto(companyTypeService.get(name));
+        return mapper.mapToDto(companyTypeService.getByType(name));
     }
     
     @GetMapping

@@ -44,7 +44,7 @@ public class AirCompanyController {
     
     @GetMapping("/byName")
     public AirCompanyResponseDto getAirCompanyByName(@RequestParam String name) {
-        return mapper.mapToDto(companyService.get(name));
+        return mapper.mapToDto(companyService.getByCompanyName(name));
     }
     
     @DeleteMapping("/{id}")

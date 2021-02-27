@@ -27,7 +27,7 @@ public class AirplaneMapper
     public Airplane mapToEntity(AirplaneRequestDto dto) {
         Airplane airplane = new Airplane();
         airplane.setAirCompany(companyService.get(dto.getAirCompanyId()));
-        airplane.setAirplaneType(airplaneTypeService.get(dto.getAirplaneTypeId()));
+        airplane.setAirplaneType(airplaneTypeService.getById(dto.getAirplaneTypeId()));
         airplane.setName(dto.getName());
         airplane.setCreatedAt(LocalDate.parse(dto.getCreatedAt()));
         airplane.setFlightDistance(dto.getFlightDistance());

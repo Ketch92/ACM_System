@@ -9,9 +9,9 @@ public interface AirplaneTypeService {
     
     List<AirplaneType> getAll();
     
-    AirplaneType get(Long id);
+    AirplaneType getById(Long id);
     
-    AirplaneType get(String type);
+    AirplaneType getByType(String type);
     
     void remove(Long id);
 }

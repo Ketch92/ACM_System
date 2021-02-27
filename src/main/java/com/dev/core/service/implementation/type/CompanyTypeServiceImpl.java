@@ -30,7 +30,7 @@ public class CompanyTypeServiceImpl implements CompanyTypeService {
     }
     
     @Override
-    public CompanyType get(String type) {
+    public CompanyType getByType(String type) {
         return companyTypeRepository.getCompanyTypeByTypeName(type).orElseThrow();
     }
     

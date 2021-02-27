@@ -32,22 +32,22 @@ public class AirplaneServiceImpl implements AirplaneService {
     }
     
     @Override
-    public List<Airplane> get(String name) {
+    public List<Airplane> getByName(String name) {
         return airplaneRepository.getByName(name);
     }
     
     @Override
-    public List<Airplane> get(AirCompany airCompany) {
+    public List<Airplane> getByAirCompany(AirCompany airCompany) {
         return airplaneRepository.getByCompany(airCompany);
     }
     
     @Override
-    public List<Airplane> get(AirplaneType airplaneType) {
+    public List<Airplane> getByType(AirplaneType airplaneType) {
         return airplaneRepository.getByType(airplaneType);
     }
     
     @Override
-    public List<Airplane> get(Set<Long> ids) {
+    public List<Airplane> getByIds(Set<Long> ids) {
         return airplaneRepository.getByIds(ids);
     }
     

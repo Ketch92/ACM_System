@@ -15,12 +15,12 @@ public class FlightStatusServiceImpl implements FlightStatusService {
     }
     
     @Override
-    public FlightStatus getStatus(String status) {
+    public FlightStatus getByStatusTitle(String status) {
         return flightStatusRepository.getFlightStatusByName(status).orElseThrow();
     }
     
     @Override
-    public FlightStatus getStatus(Long id) {
+    public FlightStatus getById(Long id) {
         return flightStatusRepository.getOne(id);
     }
     
