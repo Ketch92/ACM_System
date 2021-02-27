@@ -1,14 +1,11 @@
 package com.dev.core.entity.dto.status;
 
-import com.sun.istack.NotNull;
-import javax.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class FlightStatusRequestDto {
-    @NotNull
-    @NotBlank
+public class FlightStatusResponseDto {
+    private Long id;
     private String status;
 }

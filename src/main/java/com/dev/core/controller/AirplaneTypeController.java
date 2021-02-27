@@ -1,7 +1,7 @@
 package com.dev.core.controller;
 
 import com.dev.core.entity.dto.type.airplane.AirplaneTypeRequestDto;
-import com.dev.core.entity.dto.type.airplane.AirplaneTypeRespDto;
+import com.dev.core.entity.dto.type.airplane.AirplaneTypeResponseDto;
 import com.dev.core.service.mapper.impl.AirplaneTypeMapper;
 import com.dev.core.service.type.AirplaneTypeService;
 import java.util.List;
@@ -29,17 +29,17 @@ public class AirplaneTypeController {
     }
     
     @GetMapping("/{id}")
-    public AirplaneTypeRespDto get(@PathVariable Long id) {
+    public AirplaneTypeResponseDto get(@PathVariable Long id) {
         return mapper.mapToDto(airplaneTypeService.get(id));
     }
     
     @GetMapping("/byName")
-    public AirplaneTypeRespDto get(@RequestParam String name) {
+    public AirplaneTypeResponseDto get(@RequestParam String name) {
         return mapper.mapToDto(airplaneTypeService.get(name));
     }
     
     @GetMapping
-    public List<AirplaneTypeRespDto> getAll() {
+    public List<AirplaneTypeResponseDto> getAll() {
         return airplaneTypeService.getAll().stream()
                 .map(mapper::mapToDto)
                 .collect(Collectors.toList());

@@ -4,7 +4,7 @@ import com.dev.core.entity.AirCompany;
 import com.dev.core.entity.Flight;
 import com.dev.core.entity.FlightStatus;
 import com.dev.core.entity.dto.flight.FlightRequestDto;
-import com.dev.core.entity.dto.flight.FlightRespDto;
+import com.dev.core.entity.dto.flight.FlightResponseDto;
 import com.dev.core.service.AirCompanyService;
 import com.dev.core.service.FlightService;
 import com.dev.core.service.FlightStatusService;
@@ -45,8 +45,8 @@ public class FlightController {
     }
     
     @GetMapping
-    public List<FlightRespDto> getByCompanyAndStatus(@RequestParam String company,
-                                                     @RequestParam String status) {
+    public List<FlightResponseDto> getByCompanyAndStatus(@RequestParam String company,
+                                                         @RequestParam String status) {
         AirCompany airCompany = companyService.get(company);
         FlightStatus flightStatus = flightStatusService.getStatus(status);
         return flightService.get(flightStatus, airCompany).stream()
@@ -55,7 +55,7 @@ public class FlightController {
     }
     
     @GetMapping("/{id}")
-    public FlightRespDto getById(@PathVariable Long id) {
+    public FlightResponseDto getById(@PathVariable Long id) {
         return mapper.mapToDto(flightService.get(id));
     }
     
@@ -67,7 +67,7 @@ public class FlightController {
     }
     
     @GetMapping("/active/24")
-    private List<FlightRespDto> getActiveAndStartedMore24hoursAgo() {
+    private List<FlightResponseDto> getActiveAndStartedMore24hoursAgo() {
         return flightService.getByStatusAndStartedBefore(LocalDateTime.now().minusHours(24L),
                 ACTIVE_STATUS).stream()
                 .map(mapper::mapToDto)

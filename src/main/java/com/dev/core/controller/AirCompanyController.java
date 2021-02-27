@@ -2,7 +2,7 @@ package com.dev.core.controller;
 
 import com.dev.core.entity.AirCompany;
 import com.dev.core.entity.dto.company.AirCompanyRequestDto;
-import com.dev.core.entity.dto.company.AirCompanyRespDto;
+import com.dev.core.entity.dto.company.AirCompanyResponseDto;
 import com.dev.core.service.AirCompanyService;
 import com.dev.core.service.mapper.impl.AirCompanyMapper;
 import java.util.List;
@@ -31,19 +31,19 @@ public class AirCompanyController {
     }
     
     @GetMapping
-    public List<AirCompanyRespDto> getAll() {
+    public List<AirCompanyResponseDto> getAll() {
         return companyService.getAll().stream()
                 .map(mapper::mapToDto)
                 .collect(Collectors.toList());
     }
     
     @GetMapping("/{id}")
-    public AirCompanyRespDto getAirCompany(@PathVariable Long id) {
+    public AirCompanyResponseDto getAirCompany(@PathVariable Long id) {
         return mapper.mapToDto(companyService.get(id));
     }
     
     @GetMapping("/byName")
-    public AirCompanyRespDto getAirCompanyByName(@RequestParam String name) {
+    public AirCompanyResponseDto getAirCompanyByName(@RequestParam String name) {
         return mapper.mapToDto(companyService.get(name));
     }
     

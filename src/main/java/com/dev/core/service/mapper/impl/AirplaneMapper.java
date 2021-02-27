@@ -2,7 +2,7 @@ package com.dev.core.service.mapper.impl;
 
 import com.dev.core.entity.Airplane;
 import com.dev.core.entity.dto.airplane.AirplaneRequestDto;
-import com.dev.core.entity.dto.airplane.AirplaneRespDto;
+import com.dev.core.entity.dto.airplane.AirplaneResponseDto;
 import com.dev.core.service.AirCompanyService;
 import com.dev.core.service.mapper.ToDtoMapper;
 import com.dev.core.service.mapper.ToEntityMapper;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AirplaneMapper
-        implements ToDtoMapper<Airplane, AirplaneRespDto>,
+        implements ToDtoMapper<Airplane, AirplaneResponseDto>,
         ToEntityMapper<AirplaneRequestDto, Airplane> {
     private final AirCompanyService companyService;
     private final AirplaneTypeService airplaneTypeService;
@@ -37,8 +37,8 @@ public class AirplaneMapper
     }
     
     @Override
-    public AirplaneRespDto mapToDto(Airplane airplane) {
-        AirplaneRespDto dto = new AirplaneRespDto();
+    public AirplaneResponseDto mapToDto(Airplane airplane) {
+        AirplaneResponseDto dto = new AirplaneResponseDto();
         dto.setId(airplane.getId());
         dto.setName(airplane.getName());
         dto.setAirplaneType(airplane.getType().getTypeName());
