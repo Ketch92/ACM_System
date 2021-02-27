@@ -2,7 +2,6 @@ package com.dev.core.entity;
 
 import com.dev.core.entity.type.CompanyType;
 import java.time.LocalDate;
-import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

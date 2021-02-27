@@ -8,6 +8,7 @@ import com.dev.core.service.AirplaneService;
 import com.dev.core.service.FlightStatusService;
 import com.dev.core.service.mapper.ToDtoMapper;
 import com.dev.core.service.mapper.ToEntityMapper;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -61,7 +62,7 @@ public class FlightMapper
         flight.setFlightStatus(flightStatusService.getStatus(dto.getFlightStatusId()));
         flight.setAirCompany(companyService.get(dto.getAirCompanyId()));
         flight.setAirplanes(airplaneService.get(dto.getAirplaneIds()));
-        flight.setCreatedAt(LocalDateTime.parse(dto.getCreatedAt()));
+        flight.setCreatedAt(LocalDate.parse(dto.getCreatedAt()));
         flight.setDepartureCountry(dto.getDepartureCountry());
         flight.setDestinationCountry(dto.getDestinationCountry());
         flight.setDistance(dto.getDistance());

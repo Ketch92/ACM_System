@@ -1,7 +1,7 @@
 package com.dev.core.service.implementation.type;
 
-import com.dev.core.exception.RequestProcessingException;
 import com.dev.core.entity.type.AirplaneType;
+import com.dev.core.exception.RequestProcessingException;
 import com.dev.core.repository.type.AirplaneTypeRepository;
 import com.dev.core.service.type.AirplaneTypeService;
 import java.util.List;
