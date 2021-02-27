@@ -3,7 +3,7 @@ package com.dev.core.service.implementation;
 import com.dev.core.entity.AirCompany;
 import com.dev.core.entity.Flight;
 import com.dev.core.entity.FlightStatus;
-import com.dev.core.entity.exception.RequestProcessingException;
+import com.dev.core.exception.RequestProcessingException;
 import com.dev.core.repository.FlightRepository;
 import com.dev.core.service.FlightService;
 import java.time.LocalDateTime;

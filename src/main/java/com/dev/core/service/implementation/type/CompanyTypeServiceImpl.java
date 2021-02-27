@@ -1,6 +1,6 @@
 package com.dev.core.service.implementation.type;
 
-import com.dev.core.entity.exception.RequestProcessingException;
+import com.dev.core.exception.RequestProcessingException;
 import com.dev.core.entity.type.CompanyType;
 import com.dev.core.repository.type.CompanyTypeRepository;
 import com.dev.core.service.type.CompanyTypeService;

@@ -1,7 +1,7 @@
 package com.dev.core.service.implementation;
 
 import com.dev.core.entity.AirCompany;
-import com.dev.core.entity.exception.RequestProcessingException;
+import com.dev.core.exception.RequestProcessingException;
 import com.dev.core.repository.AirCompanyRepository;
 import com.dev.core.service.AirCompanyService;
 import java.util.List;
