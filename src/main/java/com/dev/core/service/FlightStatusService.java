@@ -5,9 +5,9 @@ import java.util.List;
 
 public interface FlightStatusService {
     
-    FlightStatus getStatus(String status);
+    FlightStatus getByStatusTitle(String status);
     
-    FlightStatus getStatus(Long id);
+    FlightStatus getById(Long id);
     
     List<FlightStatus> getAll();
     

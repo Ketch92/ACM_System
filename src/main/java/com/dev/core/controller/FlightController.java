@@ -4,7 +4,7 @@ import com.dev.core.entity.AirCompany;
 import com.dev.core.entity.Flight;
 import com.dev.core.entity.FlightStatus;
 import com.dev.core.entity.dto.flight.FlightRequestDto;
-import com.dev.core.entity.dto.flight.FlightRespDto;
+import com.dev.core.entity.dto.flight.FlightResponseDto;
 import com.dev.core.service.AirCompanyService;
 import com.dev.core.service.FlightService;
 import com.dev.core.service.FlightStatusService;
@@ -45,29 +45,29 @@ public class FlightController {
     }
     
     @GetMapping
-    public List<FlightRespDto> getByCompanyAndStatus(@RequestParam String company,
-                                                     @RequestParam String status) {
-        AirCompany airCompany = companyService.get(company);
-        FlightStatus flightStatus = flightStatusService.getStatus(status);
-        return flightService.get(flightStatus, airCompany).stream()
+    public List<FlightResponseDto> getByCompanyAndStatus(@RequestParam String company,
+                                                         @RequestParam String status) {
+        AirCompany airCompany = companyService.getByCompanyName(company);
+        FlightStatus flightStatus = flightStatusService.getByStatusTitle(status);
+        return flightService.getByStatusAndCompany(flightStatus, airCompany).stream()
                 .map(mapper::mapToDto)
                 .collect(Collectors.toList());
     }
     
     @GetMapping("/{id}")
-    public FlightRespDto getById(@PathVariable Long id) {
+    public FlightResponseDto getById(@PathVariable Long id) {
         return mapper.mapToDto(flightService.get(id));
     }
     
     @PostMapping
     public void addFlight(@RequestBody @Valid FlightRequestDto dto) {
         Flight flight = mapper.mapToEntity(dto);
-        flight.setFlightStatus(flightStatusService.getStatus(PENDING_STATUS));
+        flight.setFlightStatus(flightStatusService.getByStatusTitle(PENDING_STATUS));
         flightService.create(flight);
     }
     
     @GetMapping("/active/24")
-    private List<FlightRespDto> getActiveAndStartedMore24hoursAgo() {
+    private List<FlightResponseDto> getActiveAndStartedMore24hoursAgo() {
         return flightService.getByStatusAndStartedBefore(LocalDateTime.now().minusHours(24L),
                 ACTIVE_STATUS).stream()
                 .map(mapper::mapToDto)
@@ -79,15 +79,15 @@ public class FlightController {
         Flight flight = flightService.get(id);
         switch (status) {
             case DELAYED_STATUS:
-                flight.setFlightStatus(flightStatusService.getStatus(DELAYED_STATUS));
+                flight.setFlightStatus(flightStatusService.getByStatusTitle(DELAYED_STATUS));
                 flight.setDelayStartedAt(LocalDateTime.now());
                 break;
             case COMPLETED_STATUS:
-                flight.setFlightStatus(flightStatusService.getStatus(COMPLETED_STATUS));
+                flight.setFlightStatus(flightStatusService.getByStatusTitle(COMPLETED_STATUS));
                 flight.setEndedAt(LocalDateTime.now());
                 break;
             case ACTIVE_STATUS:
-                flight.setFlightStatus(flightStatusService.getStatus(ACTIVE_STATUS));
+                flight.setFlightStatus(flightStatusService.getByStatusTitle(ACTIVE_STATUS));
                 flight.setStartedAt(LocalDateTime.now());
                 break;
             default: break;

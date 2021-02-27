@@ -2,12 +2,13 @@ package com.dev.core.service.mapper.impl;
 
 import com.dev.core.entity.Flight;
 import com.dev.core.entity.dto.flight.FlightRequestDto;
-import com.dev.core.entity.dto.flight.FlightRespDto;
+import com.dev.core.entity.dto.flight.FlightResponseDto;
 import com.dev.core.service.AirCompanyService;
 import com.dev.core.service.AirplaneService;
 import com.dev.core.service.FlightStatusService;
 import com.dev.core.service.mapper.ToDtoMapper;
 import com.dev.core.service.mapper.ToEntityMapper;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class FlightMapper
-        implements ToDtoMapper<Flight, FlightRespDto>,
+        implements ToDtoMapper<Flight, FlightResponseDto>,
         ToEntityMapper<FlightRequestDto, Flight> {
     private final AirplaneMapper airplaneMapper;
     private final FlightStatusService flightStatusService;
@@ -33,8 +34,8 @@ public class FlightMapper
     }
     
     @Override
-    public FlightRespDto mapToDto(Flight flight) {
-        FlightRespDto dto = new FlightRespDto();
+    public FlightResponseDto mapToDto(Flight flight) {
+        FlightResponseDto dto = new FlightResponseDto();
         dto.setId(flight.getId());
         dto.setFlightStatus(flight.getFlightStatus().getStatusName());
         dto.setAirCompanyName(flight.getAirCompany().getName());
@@ -58,10 +59,10 @@ public class FlightMapper
     @Override
     public Flight mapToEntity(FlightRequestDto dto) {
         Flight flight = new Flight();
-        flight.setFlightStatus(flightStatusService.getStatus(dto.getFlightStatusId()));
+        flight.setFlightStatus(flightStatusService.getById(dto.getFlightStatusId()));
         flight.setAirCompany(companyService.get(dto.getAirCompanyId()));
-        flight.setAirplanes(airplaneService.get(dto.getAirplaneIds()));
-        flight.setCreatedAt(LocalDateTime.parse(dto.getCreatedAt()));
+        flight.setAirplanes(airplaneService.getByIds(dto.getAirplaneIds()));
+        flight.setCreatedAt(LocalDate.parse(dto.getCreatedAt()));
         flight.setDepartureCountry(dto.getDepartureCountry());
         flight.setDestinationCountry(dto.getDestinationCountry());
         flight.setDistance(dto.getDistance());

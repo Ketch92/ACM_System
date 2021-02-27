@@ -9,7 +9,7 @@ public interface AirCompanyService {
     
     AirCompany get(Long id);
     
-    AirCompany get(String companyName);
+    AirCompany getByCompanyName(String companyName);
     
     List<AirCompany> getAll();
     

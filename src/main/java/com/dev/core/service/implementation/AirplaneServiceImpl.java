@@ -2,8 +2,8 @@ package com.dev.core.service.implementation;
 
 import com.dev.core.entity.AirCompany;
 import com.dev.core.entity.Airplane;
-import com.dev.core.entity.exception.RequestProcessingException;
 import com.dev.core.entity.type.AirplaneType;
+import com.dev.core.exception.RequestProcessingException;
 import com.dev.core.repository.AirplaneRepository;
 import com.dev.core.service.AirplaneService;
 import java.util.List;
@@ -32,22 +32,22 @@ public class AirplaneServiceImpl implements AirplaneService {
     }
     
     @Override
-    public List<Airplane> get(String name) {
+    public List<Airplane> getByName(String name) {
         return airplaneRepository.getByName(name);
     }
     
     @Override
-    public List<Airplane> get(AirCompany airCompany) {
+    public List<Airplane> getByAirCompany(AirCompany airCompany) {
         return airplaneRepository.getByCompany(airCompany);
     }
     
     @Override
-    public List<Airplane> get(AirplaneType airplaneType) {
+    public List<Airplane> getByType(AirplaneType airplaneType) {
         return airplaneRepository.getByType(airplaneType);
     }
     
     @Override
-    public List<Airplane> get(Set<Long> ids) {
+    public List<Airplane> getByIds(Set<Long> ids) {
         return airplaneRepository.getByIds(ids);
     }
     

@@ -1,7 +1,7 @@
 package com.dev.core.controller;
 
 import com.dev.core.entity.dto.status.FlightStatusRequestDto;
-import com.dev.core.entity.dto.status.FlightStatusRespDto;
+import com.dev.core.entity.dto.status.FlightStatusResponseDto;
 import com.dev.core.service.FlightStatusService;
 import com.dev.core.service.mapper.impl.FlightStatusMapper;
 import java.util.List;
@@ -29,17 +29,17 @@ public class FlightStatusController {
     }
     
     @GetMapping("/{id}")
-    public FlightStatusRespDto get(@PathVariable Long id) {
-        return mapper.mapToDto(flightStatusService.getStatus(id));
+    public FlightStatusResponseDto get(@PathVariable Long id) {
+        return mapper.mapToDto(flightStatusService.getById(id));
     }
     
     @GetMapping("/byName")
-    public FlightStatusRespDto get(@RequestParam String name) {
-        return mapper.mapToDto(flightStatusService.getStatus(name));
+    public FlightStatusResponseDto get(@RequestParam String name) {
+        return mapper.mapToDto(flightStatusService.getByStatusTitle(name));
     }
     
     @GetMapping
-    public List<FlightStatusRespDto> getAll() {
+    public List<FlightStatusResponseDto> getAll() {
         return flightStatusService.getAll().stream()
                 .map(mapper::mapToDto)
                 .collect(Collectors.toList());

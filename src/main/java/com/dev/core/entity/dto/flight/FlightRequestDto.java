@@ -4,7 +4,11 @@ import com.sun.istack.NotNull;
 import java.util.Set;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
 public class FlightRequestDto {
     @NotNull
     private Long flightStatusId;
@@ -24,68 +28,4 @@ public class FlightRequestDto {
     @NotNull
     @NotBlank
     private String createdAt;
-    
-    public Long getFlightStatusId() {
-        return flightStatusId;
-    }
-    
-    public void setFlightStatusId(Long flightStatusId) {
-        this.flightStatusId = flightStatusId;
-    }
-    
-    public Long getAirCompanyId() {
-        return airCompanyId;
-    }
-    
-    public void setAirCompanyId(Long airCompanyId) {
-        this.airCompanyId = airCompanyId;
-    }
-    
-    public Set<Long> getAirplaneIds() {
-        return airplaneIds;
-    }
-    
-    public void setAirplaneIds(Set<Long> airplaneIds) {
-        this.airplaneIds = airplaneIds;
-    }
-    
-    public String getDepartureCountry() {
-        return departureCountry;
-    }
-    
-    public void setDepartureCountry(String departureCountry) {
-        this.departureCountry = departureCountry;
-    }
-    
-    public String getDestinationCountry() {
-        return destinationCountry;
-    }
-    
-    public void setDestinationCountry(String destinationCountry) {
-        this.destinationCountry = destinationCountry;
-    }
-    
-    public int getDistance() {
-        return distance;
-    }
-    
-    public void setDistance(int distance) {
-        this.distance = distance;
-    }
-    
-    public int getEstimatedFlightTime() {
-        return estimatedFlightTime;
-    }
-    
-    public void setEstimatedFlightTime(int estimatedFlightTime) {
-        this.estimatedFlightTime = estimatedFlightTime;
-    }
-    
-    public String getCreatedAt() {
-        return createdAt;
-    }
-    
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
 }

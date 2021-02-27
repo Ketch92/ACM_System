@@ -1,7 +1,7 @@
 package com.dev.core.service.mapper.impl;
 
 import com.dev.core.entity.dto.type.airplane.AirplaneTypeRequestDto;
-import com.dev.core.entity.dto.type.airplane.AirplaneTypeRespDto;
+import com.dev.core.entity.dto.type.airplane.AirplaneTypeResponseDto;
 import com.dev.core.entity.type.AirplaneType;
 import com.dev.core.service.mapper.ToDtoMapper;
 import com.dev.core.service.mapper.ToEntityMapper;
@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AirplaneTypeMapper
-        implements ToDtoMapper<AirplaneType, AirplaneTypeRespDto>,
+        implements ToDtoMapper<AirplaneType, AirplaneTypeResponseDto>,
         ToEntityMapper<AirplaneTypeRequestDto, AirplaneType> {
     
     @Override
-    public AirplaneTypeRespDto mapToDto(AirplaneType type) {
-        AirplaneTypeRespDto dto = new AirplaneTypeRespDto();
+    public AirplaneTypeResponseDto mapToDto(AirplaneType type) {
+        AirplaneTypeResponseDto dto = new AirplaneTypeResponseDto();
         dto.setId(type.getId());
         dto.setType(type.getTypeName());
         return dto;

@@ -3,7 +3,7 @@ package com.dev.core.controller;
 import com.dev.core.entity.AirCompany;
 import com.dev.core.entity.Airplane;
 import com.dev.core.entity.dto.airplane.AirplaneRequestDto;
-import com.dev.core.entity.dto.airplane.AirplaneRespDto;
+import com.dev.core.entity.dto.airplane.AirplaneResponseDto;
 import com.dev.core.entity.type.AirplaneType;
 import com.dev.core.service.AirCompanyService;
 import com.dev.core.service.AirplaneService;
@@ -41,37 +41,37 @@ public class AirplaneController {
     }
     
     @GetMapping
-    public List<AirplaneRespDto> getAll() {
+    public List<AirplaneResponseDto> getAll() {
         return airplaneService.getAll().stream()
                 .map(mapper::mapToDto)
                 .collect(Collectors.toList());
     }
     
     @GetMapping("/byName")
-    public List<AirplaneRespDto> getByName(@RequestParam String name) {
-        return airplaneService.get(name).stream()
+    public List<AirplaneResponseDto> getByName(@RequestParam String name) {
+        return airplaneService.getByName(name).stream()
                 .map(mapper::mapToDto)
                 .collect(Collectors.toList());
     }
     
     @GetMapping("/byCompany")
-    public List<AirplaneRespDto> getByCompany(@RequestParam String companyName) {
-        AirCompany company = companyService.get(companyName);
-        return airplaneService.get(company).stream()
+    public List<AirplaneResponseDto> getByCompany(@RequestParam String companyName) {
+        AirCompany company = companyService.getByCompanyName(companyName);
+        return airplaneService.getByAirCompany(company).stream()
                 .map(mapper::mapToDto)
                 .collect(Collectors.toList());
     }
     
     @GetMapping("/byType")
-    public List<AirplaneRespDto> getByType(@RequestParam String type) {
-        AirplaneType airplaneType = airplaneTypeService.get(type);
-        return airplaneService.get(airplaneType).stream()
+    public List<AirplaneResponseDto> getByType(@RequestParam String type) {
+        AirplaneType airplaneType = airplaneTypeService.getByType(type);
+        return airplaneService.getByType(airplaneType).stream()
                 .map(mapper::mapToDto)
                 .collect(Collectors.toList());
     }
     
     @GetMapping("/{id}")
-    public AirplaneRespDto get(@PathVariable Long id) {
+    public AirplaneResponseDto get(@PathVariable Long id) {
         return mapper.mapToDto(airplaneService.get(id));
     }
     

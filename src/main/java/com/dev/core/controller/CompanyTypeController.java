@@ -1,7 +1,7 @@
 package com.dev.core.controller;
 
 import com.dev.core.entity.dto.type.company.CompanyTypeRequestDto;
-import com.dev.core.entity.dto.type.company.CompanyTypeRespDto;
+import com.dev.core.entity.dto.type.company.CompanyTypeResponseDto;
 import com.dev.core.service.mapper.impl.CompanyTypeMapper;
 import com.dev.core.service.type.CompanyTypeService;
 import java.util.List;
@@ -29,17 +29,17 @@ public class CompanyTypeController {
     }
     
     @GetMapping("/{id}")
-    public CompanyTypeRespDto get(@PathVariable Long id) {
+    public CompanyTypeResponseDto get(@PathVariable Long id) {
         return mapper.mapToDto(companyTypeService.get(id));
     }
     
     @GetMapping("/byName")
-    public CompanyTypeRespDto get(@RequestParam String name) {
-        return mapper.mapToDto(companyTypeService.get(name));
+    public CompanyTypeResponseDto get(@RequestParam String name) {
+        return mapper.mapToDto(companyTypeService.getByType(name));
     }
     
     @GetMapping
-    public List<CompanyTypeRespDto> getAll() {
+    public List<CompanyTypeResponseDto> getAll() {
         return companyTypeService.getAll().stream()
                 .map(mapper::mapToDto)
                 .collect(Collectors.toList());
